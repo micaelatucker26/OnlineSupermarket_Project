@@ -1,0 +1,59 @@
+﻿@using OnlineSupermarket.Models.Entities
+@model ShoppingCart
+
+@{
+    ViewData["Title"] = "Shopping Cart";
+    var itemData = (Item)ViewData["Item"];
+    ViewData["Total"] = "Insert total price in cart here.";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<h2> You have the following items in your cart:</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Name
+            </th>
+            <th>
+                Type
+            </th>
+            <th>
+                Total Price
+            </th>
+            <th>
+                Amount In Stock
+            </th>
+            <th>
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Item)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Type)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AmountInStock)
+                </td>
+                <td>
+                    <button><a asp-action="Remove" asp-route-id="@item.Id">Remove</a></button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<h2> Cart Total: @ViewData["Total"] </h2>
+<a asp-action="Empty" asp-controller="ShoppingCart">Empty Cart (No Purchase)</a> |
+<a asp-action="Checkout" asp-controller="ShoppingCart">Checkout</a> |
+<a asp-action="Index" asp-controller="Home">Back To Main Shopping</a>

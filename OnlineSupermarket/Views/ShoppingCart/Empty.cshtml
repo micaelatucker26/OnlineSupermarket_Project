@@ -1,0 +1,24 @@
+﻿@model OnlineSupermarket.Models.Entities.ShoppingCart
+
+@{
+    ViewData["Title"] = "Are you sure you want to empty this shopping cart?";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Id)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Id)
+        </dd>
+    </dl>
+    
+    <form asp-action="Empty">
+        <input type="submit" value="Delete" class="btn btn-default" /> |
+        <a asp-action="Index" asp-controller="ShoppingCart">Back to Shopping Cart</a>
+    </form>
+</div>

@@ -1,0 +1,139 @@
+﻿
+@model IEnumerable<OnlineSupermarket.Models.Entities.Item>
+@using System.Linq
+@{
+    ViewData["Title"] = "Main Shopping";
+    foreach(var items in Model)
+    {
+        var total = 0;
+        total= items.Price;
+        ViewData["Total"] = total;
+    }
+
+    // var shoppingCart = (ShoppingCart)ViewData["ShoppingCart"];
+}
+<h2>@ViewData["Title"]</h2>
+
+<h2> Number of items in shopping cart: @Model.Count() </h2>
+@*<h2> Total: </h2>*@
+
+<h2> Choose an item to buy from the following aisles: </h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Aisle 1: Cereal
+            </th>
+            <th>
+                Aisle 2: Can Goods
+            </th>
+            <th>
+                Aisle 3: Bread
+            </th>
+            <th>
+                Aisle 4: Candy
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @if (item.Type == "Cereal" && item.AmountInStock != 0.0)
+                    {
+                        @Html.DisplayFor(modelItem => item.Name)
+                        <br />
+                        @Html.DisplayFor(modelItem => item.Price)
+                        <br />
+                        @Html.DisplayFor(modelItem => item.AmountInStock)
+                        <br />
+                        <button type="button" class="btn btn-info"><a asp-action="Buy" asp-controller="Item" asp-route-id="@item.Id">Buy</a></button>
+                    }
+                    else if (item.Type == "Cereal" && item.AmountInStock == 0.0)
+                    {
+                        @Html.DisplayFor(modelItem => item.Name)
+                        <br />
+                        @Html.DisplayFor(modelItem => item.Price)
+                        <br />
+                        @Html.DisplayFor(modelItem => item.AmountInStock)
+                        <br />
+                        <button type="button" class="btn btn-info" disabled><a asp-action="Buy" asp-controller="Item" asp-route-id="@item.Id">Buy</a></button>
+                    }
+                </td>
+                <td>
+                    @if (item.Type == "CanGoods" && item.AmountInStock != 0.0)
+                    {
+                        @Html.DisplayFor(modelItem => item.Name)
+                        <br />
+                        @Html.DisplayFor(modelItem => item.Price)
+                        <br />
+                        @Html.DisplayFor(modelItem => item.AmountInStock)
+                        <br />
+                        <button type="button" class="btn btn-info"><a asp-action="Buy" asp-controller="Item" asp-route-id="@item.Id">Buy</a></button>
+
+                    }
+                    else if (item.Type == "Can Goods" && item.AmountInStock == 0.0)
+                    {
+                        @Html.DisplayFor(modelItem => item.Name)
+                        <br />
+                        @Html.DisplayFor(modelItem => item.Price)
+                        <br />
+                        @Html.DisplayFor(modelItem => item.AmountInStock)
+                        <br />
+                        <button type="button" class="btn btn-info" disabled><a asp-action="Buy" asp-controller="Item" asp-route-id="@item.Id">Buy</a></button>
+                    }
+                </td>
+                <td>
+                    @if (item.Type == "Bread" && item.AmountInStock != 0.0)
+                    {
+                        @Html.DisplayFor(modelItem => item.Name)
+                        <br />
+                        @Html.DisplayFor(modelItem => item.Price)
+                        <br />
+                        @Html.DisplayFor(modelItem => item.AmountInStock)
+                        <br />
+                        <button type="button" class="btn btn-info"><a asp-action="Buy" asp-controller="Item" asp-route-id="@item.Id">Buy</a></button>
+                    }
+                    else if (item.Type == "Bread" && item.AmountInStock == 0.0)
+                    {
+                        @Html.DisplayFor(modelItem => item.Name)
+                        <br />
+                        @Html.DisplayFor(modelItem => item.Price)
+                        <br />
+                        @Html.DisplayFor(modelItem => item.AmountInStock)
+                        <br />
+                        <button type="button" class="btn btn-info" disabled><a asp-action="Buy" asp-controller="Item" asp-route-id="@item.Id">Buy</a></button>
+                    }
+                </td>
+                <td>
+                    @if (item.Type == "Candy" && item.AmountInStock != 0.0)
+                    {
+                        @Html.DisplayFor(modelItem => item.Name)
+                        <br />
+                        @Html.DisplayFor(modelItem => item.Price)
+                        <br />
+                        @Html.DisplayFor(modelItem => item.AmountInStock)
+                        <br />
+                        <button type="button" class="btn btn-info"><a asp-action="Buy" asp-controller="Item" asp-route-id="@item.Id">Buy</a></button>
+                    }
+                    else if (item.Type == "Candy" && item.AmountInStock == 0.0)
+                    {
+                        @Html.DisplayFor(modelItem => item.Name)
+                        <br />
+                        @Html.DisplayFor(modelItem => item.Price)
+                        <br />
+                        @Html.DisplayFor(modelItem => item.AmountInStock)
+                        <br />
+                        <button type="button" class="btn btn-info" disabled><a asp-action="Buy" asp-controller="Item" asp-route-id="@item.Id">Buy</a></button>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<h2> Number of items in shopping cart: @Model.Count() </h2>
+@*<h2> Total: @ViewData["Total"] </h2>*@
+<h2> Total: @ViewData["Total"]</h2>
+<a asp-controller="ShoppingCart" asp-action="Index">View Shopping Cart</a>
+

@@ -1,0 +1,48 @@
+﻿@model OnlineSupermarket.Models.Entities.Item
+
+@{
+    ViewData["Title"] = "Are you sure you want to remove this item from your cart?";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Type)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Type)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.AmountInStock)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.AmountInStock)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.QuantityToBuy)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.QuantityToBuy)
+        </dd>
+    </dl>
+    
+    <form asp-action="Remove">
+        <input type="submit" value="Delete" class="btn btn-default" /> |
+        <a asp-action="Index" asp-controller="ShoppingCart">Back to Shopping Cart</a>
+    </form>
+</div>
